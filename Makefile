@@ -23,3 +23,9 @@ test: libgsl.a
 
 clean:
 	rm -f $(OBJECTS)
+
+purge: clean
+	rm -f libgsl.a
+
+cleanhist:
+	rm -rf .git .gitignore
