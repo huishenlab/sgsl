@@ -1,10 +1,14 @@
 CC     = gcc
 AR     = ar
-CFLAGS = -g -Wall -O2 -std=gnu99
-# -std=c99 is important, otherwise duplicate definition for inline
+CFLAGS = -g -Wall -std=gnu11
+# -std=c99 or -std=gnu99 might be important for compilation on a mac, otherwise duplicate definition for inline
 
 SOURCES := $(wildcard **/*.c)
 OBJECTS := $(patsubst %.c, %.o, $(SOURCES))
+
+ifneq (1, $(CF_NO_OPTIMIZE))
+	CFLAGS += -O2
+endif
 
 main: libgsl.a
 
