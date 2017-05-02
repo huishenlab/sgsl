@@ -1,6 +1,7 @@
 CC     = gcc
 AR     = ar
-CFLAGS = -g -Wall -std=gnu11
+CFLAGS = -g -Wall
+# -std=gnu11 travis complains about this
 # -std=c99 or -std=gnu99 might be important for compilation on a mac, otherwise duplicate definition for inline
 
 SOURCES := $(wildcard **/*.c)
