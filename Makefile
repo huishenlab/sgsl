@@ -7,8 +7,9 @@ CFLAGS = -g -Wall
 SOURCES := $(wildcard **/*.c)
 OBJECTS := $(patsubst %.c, %.o, $(SOURCES))
 
-ifneq (1, $(CF_NO_OPTIMIZE))
+ifeq (1, $(CF_OPTIMIZE))
 	CFLAGS += -O2
+	CFLAGS := $(filter-out -g,$(CFLAGS))
 endif
 
 main: libgsl.a
